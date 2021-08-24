@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -48,15 +49,32 @@ def address(request, pk):
 
 @csrf_exempt
 def login(request):
+    # if request.method == 'POST':
+    #     data = JSONParser().parse(request)
+    #     search_name = data['name']
+    #     print(search_name)
+    #     # search_name = request.POST.get('name', False) # False -> 없으면 아무것도 안하고 있으면 쓴다
+    #     obj = Addresses.objects.get(name=search_name)
+    #     print(obj.phone_number)
+    #
+    #     if data['phone_number'] == obj.phone_number:
+    #         return HttpResponse(status=200)
+    #     else:
+    #         return HttpResponse(status=400)
+
     if request.method == 'POST':
-        data = JSONParser().parse(request)
-        search_name = data['name']
-        print(search_name)
-        # search_name = request.POST.get('name', False) # False -> 없으면 아무것도 안하고 있으면 쓴다
-        obj = Addresses.objects.get(name=search_name)
-        print(obj.phone_number)
-        
-        if data['phone_number'] == obj.phone_number:
+        print("리퀘스트로그: "+str(request.body))
+        id = request.POST.get('userid', '')
+        pw = request.POST.get('userpw', '')
+        print("id = " + id + " pw = " + pw)
+
+        result = authenticate(username=id, password=pw)
+
+        if result :
+            print("로그인 성공!")
             return HttpResponse(status=200)
         else:
-            return HttpResponse(status=400)
+            print("실패")
+            return HttpResponse(status=401)
+
+    return render(request, 'addresses/login.html')

@@ -41,7 +41,7 @@ select * from tabs;]]></console>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="c81f0030-0b56-41d3-b0c1-1d3c4f9e60fb" object-ref="schemas/main/tables/addresses_addresses" />
+      <object connection-id="c81f0030-0b56-41d3-b0c1-1d3c4f9e60fb" object-ref="schemas/main/tables/auth_user" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
@@ -49,6 +49,11 @@ select * from tabs;]]></console>
     <connection id="c81f0030-0b56-41d3-b0c1-1d3c4f9e60fb" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="c81f0030-0b56-41d3-b0c1-1d3c4f9e60fb" dataset="main.auth_user" active-filter-id="8edc3123-22a8-435c-a35d-581001a1005c">
+      <filter id="8edc3123-22a8-435c-a35d-581001a1005c" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
     <filter-actions connection-id="c81f0030-0b56-41d3-b0c1-1d3c4f9e60fb" dataset="main.addresses_addresses" active-filter-id="EMPTY_FILTER">
       <filter id="7688e48a-cbfc-47f7-9770-fc984731a0cf" name="1" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="id" operator="=" value="1" active="true" />
