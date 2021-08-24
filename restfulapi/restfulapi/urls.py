@@ -7,5 +7,6 @@ from addresses import views
 urlpatterns = [
     path('addresses/', views.address_list), # r -> 인코딩 형식
     path('addresses/<int:pk>/', views.address),
+    path('login/', views.login),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

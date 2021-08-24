@@ -46,3 +46,17 @@ def address(request, pk):
         return HttpResponse(status=204)
 
 
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        search_name = data['name']
+        print(search_name)
+        # search_name = request.POST.get('name', False) # False -> 없으면 아무것도 안하고 있으면 쓴다
+        obj = Addresses.objects.get(name=search_name)
+        print(obj.phone_number)
+        
+        if data['phone_number'] == obj.phone_number:
+            return HttpResponse(status=200)
+        else:
+            return HttpResponse(status=400)
